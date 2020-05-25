@@ -1,0 +1,18 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <p>Are You Sure You Want to Delete <strong>{{item.name}}"</strong></p>
+            <form action="{% url 'delete_patient' item.id %}" method="POST">
+                {% csrf_token %}
+                <a href="{% url 'receptionist_dashboard' %}" class="btn btn-warning">Cancel</a>&nbsp;
+                    <input type="submit" name="Confirm" class="btn btn-danger">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

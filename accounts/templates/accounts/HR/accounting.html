@@ -1,0 +1,57 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="col">
+
+        <div class="card card-body">
+            <button class="btn btn-primary">Individual Outstandings</button>
+            <table class="table tbale-sm">
+                <tr>
+                    <th>Patient</th>
+                    <th>Outstanding</th>
+                    <th>Paid</th>
+                    <th>Reminder</th>
+                </tr>
+                {% for pos in patient_outstandings %}
+                <tr>
+                    <td>{{pos.patient}}</td>
+                    <td>{{pos.outstanding}}</td>
+                    <td>{{pos.paid}}</td>
+                    <td><a href="#"><button type="button" class="btn btn-danger btn-sm">Send Reminder</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-7">
+        <div class="col">
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm" href="{% url 'create_patient' %}">Consultaion's Outstanding</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Date</th>
+                    <th>Patient Name</th>
+                    <th>Paid</th>
+                    <th>Outstanding</th>
+                    <th>Total</th>
+                    <th>Invoice</th>
+                </tr>
+                {% for dos in doctor_outstandings %}
+                <tr>
+                    <td>{{dos.date}}</td>
+                    <td>{{dos.patient}}</td>
+                    <td>{{dos.paid}}</td>
+                    <td>{{dos.outstanding}}</td>
+                    <td>{{total}}</td>
+                     <td><a href="#">Open Invoice</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!-- Hi Thanks For Article -->
+        </div>
+    </div>
+</div>
+{% endblock %}

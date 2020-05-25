@@ -1,0 +1,72 @@
+
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+<h3>Dashboard</h3>
+<br>
+
+{% include 'accounts/component/status.html' %}
+<div class="row">
+    <div class="col-md-5">
+        <div class="col">
+        <h5>APPOINTMENTS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'create_appointment' %}">Create Appointments</a>
+            <table class="table tbale-sm">
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Doctor</th>
+                    <th>Patient</th>
+                    <th>Status</th>
+                </tr>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{appointment.date}}</td>
+                    <td>{{appointment.time}}</td>
+                    <td>{{appointment.doctor.name}}</td>
+                    <td>{{appointment.patient.name}}</td>
+                    <td>{{appointment.status}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-7">
+        <div class="col">
+        <h5>LAST 5 PATIENTS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm" href="{% url 'create_patient' %}">Create Patient</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{patient.name}}</td>
+                    <td>{{patient.phone}}</td>
+                    <td>{{patient.email}}</td>
+                    <td>{{patient.gender}}</td>
+                    <td>{{patient.age}}</td>
+                    <td><a href="{% url 'update_patient' patient.id %}"><button type="button" class="btn btn-warning btn-sm">Update</button></td>
+                     <td><a href="{% url 'delete_patient' patient.id %}"><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!-- Hi Thanks For Article -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

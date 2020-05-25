@@ -1,0 +1,136 @@
+
+{% load static %}
+
+
+<!--Patien Login-->
+{% if user.role == 'patient' %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'about' %}">About Us</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contact</a>
+        <a class="nav-item nav-link active" href="{% url 'user_appointments' %}">Your Appointment's</a>
+        <a class="nav-item nav-link active" href="{% url 'user_invoice' %}">Invoice & Payments</a>
+        <a class="nav-item nav-link active" href="{% url 'user_profile' %}">Profile</a>
+        <a class="nav-item nav-link active" href="{% url 'user_medical_history' %}">Medical History</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <form action="{% url 'logoutuser' %}" method="POST">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-danger">Log Out</button>&nbsp;
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+{% elif user.role == 'doctor' %}
+<!--Doctor-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'about' %}">About Us</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contact</a>
+        <a class="nav-item nav-link active" href="{% url 'doctor_profile' %}">Profile</a>
+        <a class="nav-item nav-link active" href="{% url 'doctor_appointments' %}">Appointments</a>
+        <a class="nav-item nav-link active" href="{% url 'doctor_prescription' %}">Prescription</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <form action="{% url 'logoutuser' %}" method="POST">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-danger">Log Out</button>&nbsp;
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<!--Receptionist-->
+
+
+{% elif user.role == 'receptionist' %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'about' %}">About Us</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contact</a>
+        <a class="nav-item nav-link active" href="{% url 'receptionist_dashboard' %}">Dashboard</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <form action="{% url 'logoutuser' %}" method="POST">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-danger">Log Out</button>&nbsp;
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+<!--HR Login-->
+
+
+{% elif user.role == 'hr' %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'about' %}">About Us</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contact</a>
+        <a class="nav-item nav-link active" href="{% url 'hr_dashboard' %}">Dashboard</a>
+        <a class="nav-item nav-link active" href="{% url 'hr_accounting' %}">Accounting</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <form action="{% url 'logoutuser' %}" method="POST">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-danger">Log Out</button>&nbsp;
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!--WIthout LOGIN-->
+{% else %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'about' %}">About Us</a>
+        <a class="nav-item nav-link active" href="{% url 'contact' %}">Contact</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <a role="button" class="btn btn-warning" href="{% url 'register' %}">Register<span class="sr-only">(current)</span></a>&nbsp;
+      <a class="btn btn-success" href="{% url 'loginuser' %}">Log In</a>
+    </div>
+  </div>
+</nav>
+
+{% endif %}

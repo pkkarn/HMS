@@ -1,0 +1,89 @@
+{% load static %}
+{% if user.role == "receptionist" %}
+
+<div class="row">
+
+        <div class="col">  <!--Col ke andar Col mid krna-->
+            <div class="col-md">
+            <div class="card text-center text-white mb-3" id="total-orders">
+                <div class="card-header">
+                    <h5 class="card-title">Total Appointments</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_appointments}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+            <div class="card text-white text-center mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <h5 class="card-title">Appointments Done</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{appointments_done}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+            <div class="mb-3 card text-white text-center" id="orders-pending">
+                <div class="card-header">
+                    <h5 class="card-title">Upcoming Appointments</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{appointments_pending}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+
+</div>
+{% elif user.role == "hr" %}
+<div class="row">
+        <div class="col">  <!--Col ke andar Col mid krna-->
+            <div class="col-md">
+            <div class="card text-center text-white mb-3" id="total-orders">
+                <div class="card-header">
+                    <h5 class="card-title">Total Doctors</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_doctors}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+            <div class="card text-white text-center mb-3" id="orders-delivered">
+                <div class="card-header">
+                    <h5 class="card-title">Total Patients</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{total_patients}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+            <div class="mb-3 card text-white text-center" id="orders-pending">
+                <div class="card-header">
+                    <h5 class="card-title">On Duty Doctors</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{active_doctors}}</h3>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+</div>
+
+{% endif %}

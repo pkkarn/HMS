@@ -1,0 +1,55 @@
+
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+<h3>Dashboard</h3>
+<br>
+
+{% include 'accounts/component/status.html' %}
+
+<div class="row">
+    <div class="col-md">
+        <div class="col">
+        <h5>DOCTORS</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm" href="{% url 'create_doctor' %}">Add Doctor</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Attendance</th>
+                    <th>Salary</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{doctor.name}}</td>
+                    <td>{{doctor.phone}}</td>
+                    <td>{{doctor.email}}</td>
+                    <td>{{doctor.gender}}</td>
+                    <td>{{doctor.age}}</td>
+                    <td>{{doctor.status}}</td>
+                    <td>{{doctor.department}}</td>
+                    <td>{{doctor.attendance}}</td>
+                    <td>{{doctor.salary}}</td>
+                    <td><a href="{% url 'update_doctor' doctor.id %}"><button type="button" class="btn btn-warning btn-sm">Update</button></td>
+                     <td><a href="{% url 'delete_doctor' doctor.id %}"><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        </div>
+        <!-- Hi Thanks For Article -->
+    </div>
+</div>
+
+
+{% endblock %}
